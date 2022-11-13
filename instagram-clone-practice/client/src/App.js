@@ -15,10 +15,11 @@ import {reducer, initialState} from './reducers/userReducer'
 
  const Routing = () => {
   const navigate = useNavigate()
+  const {state, dispatch} = useContext(UserContext)
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"))
     if (user) {
-      navigate('/')
+      dispatch({type: "USER", payload: user})
     } else {
       navigate('/signin')
     }
