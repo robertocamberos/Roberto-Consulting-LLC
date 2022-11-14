@@ -9,7 +9,7 @@ import Signup from './components/screens/Signup'
 import CreatePost from './components/screens/CreatePost';
 import {  BrowserRouter as Router} from "react-router-dom"
 import {reducer, initialState} from './reducers/userReducer'
-
+import UserProfile from './components/screens/UserProfile';
 
  export const UserContext = createContext()
 
@@ -28,9 +28,10 @@ import {reducer, initialState} from './reducers/userReducer'
     <Routes>
        <Route path="/" element={<Home />} />
        <Route path="/signin" element={<Signin />} />
-       <Route path="/profile" element={<Profile />} />
        <Route path="/signup" element={<Signup />} />
+       <Route exact path="/profile" element={<Profile />} />
        <Route path="/create" element={<CreatePost />} />
+       <Route path="/profile/:userid" element={<UserProfile />} />
     </Routes>
   )
  }
