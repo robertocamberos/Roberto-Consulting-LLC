@@ -21,7 +21,6 @@ import UserProfile from './components/screens/UserProfile';
 
     if (user) {
       dispatch({type: "USER", payload: user})
-      navigate('/')
     } else {
       navigate('/signin')
     }
