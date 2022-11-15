@@ -15,9 +15,12 @@ import UserProfile from './components/screens/UserProfile';
 
  const Routing = () => {
   const navigate = useNavigate()
+  const {state, dispatch} = useContext(UserContext)
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"))
+
     if (user) {
+      dispatch({type: "USER", payload: user})
       navigate('/')
     } else {
       navigate('/signin')
@@ -34,6 +37,23 @@ import UserProfile from './components/screens/UserProfile';
     </Routes>
   )
  }
+
+function App() {
+  const [state, dispatch] = useReducer(reducer, initialState)
+  return (
+    <UserContext.Provider value={{state, dispatch}}>
+        <BrowserRouter>
+      <NavBar />
+      <Routing />
+    
+     
+      </BrowserRouter>
+    </UserContext.Provider>
+  );
+}
+export default App;
+
+
 
 // const Routing = () => {
 //   const navigate = useNavigate()
@@ -65,20 +85,3 @@ import UserProfile from './components/screens/UserProfile';
 //     </Routes>
 //   )
 // }
-
-
-
-function App() {
-  const [state, dispatch] = useReducer(reducer, initialState)
-  return (
-    <UserContext.Provider value={{state, dispatch}}>
-        <BrowserRouter>
-      <NavBar />
-      <Routing />
-    
-     
-      </BrowserRouter>
-    </UserContext.Provider>
-  );
-}
-export default App;
