@@ -1,21 +1,6 @@
-import React,{useEffect, useState, useContext} from 'react'
-import {UserContext} from '../../App'
+import React from 'react'
 
 const Profile = () => {
-  const [mypics, setPics] = useState([]) 
-  const {state, dispatch} = useContext(UserContext)
-  console.log(state)
-  useEffect(() => {
-    fetch('/mypost', {
-      headers: {
-        "Authroization": "Bearer " + localStorage.getItem("jwt")
-      }
-    }).then(res=>res.json())
-    .then(result => {
-      console.log(result)
-      setPics(result.mypost)
-    })
-  },[])
   return (
       <div style={{maxWidth:"550px", margin:"0px auto"}}>
         <div style = {{
@@ -30,7 +15,7 @@ const Profile = () => {
             />
           </div>
           <div>
-            <h4>{state?state.name:"loading"}</h4>
+            <h4>Bob Bobberson</h4>
             <div style={{display:"flex", justifyContent:"space-between", width:"108%"}}>
               <h6>40 posts</h6>
               <h6>40 followers</h6>
@@ -39,13 +24,12 @@ const Profile = () => {
           </div>
         </div>
         <div className="gallery">
-          { mypics?.map(item => {
-              return (
-                <img key={item._id} className="item" src={item.photo} alt={item.title} />
-              )
-            })
-          }
-
+          <img className="item" src="https://images.unsplash.com/photo-1523956468692-1e219561ea46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTl8fHBlcnNvbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=800&q=60" />
+          <img className="item" src="https://images.unsplash.com/photo-1523956468692-1e219561ea46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTl8fHBlcnNvbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=800&q=60" />
+          <img className="item" src="https://images.unsplash.com/photo-1523956468692-1e219561ea46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTl8fHBlcnNvbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=800&q=60" />
+          <img className="item" src="https://images.unsplash.com/photo-1523956468692-1e219561ea46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTl8fHBlcnNvbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=800&q=60" />
+          <img className="item" src="https://images.unsplash.com/photo-1523956468692-1e219561ea46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTl8fHBlcnNvbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=800&q=60" />
+          <img className="item" src="https://images.unsplash.com/photo-1523956468692-1e219561ea46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTl8fHBlcnNvbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=800&q=60" />
         </div>
       </div>
   )
