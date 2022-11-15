@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const {JWT_SECRET} = require('../keys')
 const mongoose = require('mongoose')
 const User = mongoose.model("User")
-const router = require('../routes/user')
+//const router = require('../routes/user')
 
 
 module.exports = (req, res, next) => {
@@ -27,44 +27,44 @@ module.exports = (req, res, next) => {
   })
 }
 
-  router.put('follow', requireLogin,(req,res) => {
-    User.findByIdAndUpdate(req.body.followId, {
-      $push: {followers: req.user._id}
+  // router.put('follow', requireLogin,(req,res) => {
+  //   User.findByIdAndUpdate(req.body.followId, {
+  //     $push: {followers: req.user._id}
 
-    }, {
-      new: true
-    }, (err, result) => {
-      if (err) {
-        return res.status(422).json({error: err})
-      }
-      User.findByIdAndUpdate(req.user._id, {
-        $push: {following: req.body.followId}
-      }, {new:true}).then(result => {
-        res.json(result)
-      }).catch(err => {
-        return res.status(422).json({error: err})
-      })
-    }
-    )
-  })
+  //   }, {
+  //     new: true
+  //   }, (err, result) => {
+  //     if (err) {
+  //       return res.status(422).json({error: err})
+  //     }
+  //     User.findByIdAndUpdate(req.user._id, {
+  //       $push: {following: req.body.followId}
+  //     }, {new:true}).then(result => {
+  //       res.json(result)
+  //     }).catch(err => {
+  //       return res.status(422).json({error: err})
+  //     })
+  //   }
+  //   )
+  // })
 
-  router.put('unfollow', requireLogin,(req,res) => {
-    User.findByIdAndUpdate(req.body.unfollowId, {
-      $pull: {followers: req.user._id}
+  // router.put('unfollow', requireLogin,(req,res) => {
+  //   User.findByIdAndUpdate(req.body.unfollowId, {
+  //     $pull: {followers: req.user._id}
 
-    }, {
-      new: true
-    }, (err, result) => {
-      if (err) {
-        return res.status(422).json({error: err})
-      }
-      User.findByIdAndUpdate(req.user._id, {
-        $pull: {following: req.body.unfollowId}
-      }, {new:true}).then(result => {
-        res.json(result)
-      }).catch(err => {
-        return res.status(422).json({error: err})
-      })
-    }
-    )
-  })
+  //   }, {
+  //     new: true
+  //   }, (err, result) => {
+  //     if (err) {
+  //       return res.status(422).json({error: err})
+  //     }
+  //     User.findByIdAndUpdate(req.user._id, {
+  //       $pull: {following: req.body.unfollowId}
+  //     }, {new:true}).then(result => {
+  //       res.json(result)
+  //     }).catch(err => {
+  //       return res.status(422).json({error: err})
+  //     })
+  //   }
+  //   )
+  // })
