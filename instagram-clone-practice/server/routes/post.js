@@ -18,7 +18,8 @@ router.get('/allpost',requireLogin, (req, res) => {
 
 router.post('/createpost',requireLogin , (req,res) => {
   const {title, body, pic} = req.body
-  console.log(title, body, pic)
+  // console.log(title, body, pic)
+  // console.log(title, body, pic)
   if (!title || !body || !pic) {
     return res.status(422).json({error: "please add all the fields"})
   }
@@ -28,7 +29,8 @@ router.post('/createpost',requireLogin , (req,res) => {
   req.user.password = undefined
   const post = new Post({
     title,
-    body, 
+    body,
+    // pic, 
     photo: pic,
     postedBy: req.user
   })
