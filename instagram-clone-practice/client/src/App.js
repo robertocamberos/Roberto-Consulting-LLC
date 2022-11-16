@@ -51,36 +51,4 @@ function App() {
   );
 }
 export default App;
-
-
-
-// const Routing = () => {
-//   const navigate = useNavigate()
-//   useEffect(() => {
-//     const user = JSON.parse(localStorage.getItem("user"))
-//     if (user) {
-//       navigate('/')
-//     } else {
-//       navigate('/signin')
-//     }
-//   }, [navigate])
-//   const navigate = useNavigate()
-//   const {state, dispatch} = useContext(UserContext)
-//   useEffect(() => {
-//     const user = JSON.parse(localStorage.getItem("user"))
-//     if (user) {
-//       dispatch({type: "USER", payload: user})
-//       navigate('/')
-//     } else {
-//       navigate('/signin')
-//     }
-//   return (
-//     <Routes>
-//       <Route path="/" element={<Home />} />
-//       <Route path="/signin" element={<Signin />} />
-//       <Route path="/profile" element={<Profile />} />
-//       <Route path="/signup" element={<Signup />} />
-//       <Route path="/create" element={<CreatePost />} />
-//     </Routes>
-//   )
-// }
+         

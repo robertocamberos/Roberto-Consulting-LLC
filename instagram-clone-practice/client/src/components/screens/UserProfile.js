@@ -5,6 +5,7 @@ const Profile = () => {
   const [userProfile, setProfile] = useState(null)
   const {state, dispatch} = useContext(UserContext)
   const {userid} = useParams()
+  console.log(userid)
   useEffect(() => {
     fetch(`/user/${userid}`, {
       headers: {
@@ -19,8 +20,6 @@ const Profile = () => {
   return (
     <>
     {userProfile ?
-    
-  
       <div style={{maxWidth:"550px", margin:"0px auto"}}>
         <div style = {{
           display: "flex",
@@ -35,7 +34,8 @@ const Profile = () => {
           </div>
           <div>
             <h4>{userProfile.user.name}</h4>
-            <h5>{userProfile.user.email}</h5>
+            <h5>{userProfile.user.email} console.log(userProfile.us)</h5>
+            
             <div style={{display:"flex", justifyContent:"space-between", width:"108%"}}>
               <h6>{userProfile.posts.length} posts</h6>
               <h6>40 followers</h6>
@@ -51,10 +51,9 @@ const Profile = () => {
               )
             })
           }
-
         </div>
       </div>
-      : <h2>Loading...</h2>}
+      : <h2>Loading...!</h2>}
       </>
   )
 }
